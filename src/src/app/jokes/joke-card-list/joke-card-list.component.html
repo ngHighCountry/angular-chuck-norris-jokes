@@ -1,0 +1,10 @@
+<h1>Chuck Norris Jokes</h1>
+
+<div *ngIf="!(jokes$ | async)">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="jokes$ | async as jokes">
+  <div><button mat-fab (click)="refreshJokes()"><mat-icon>refresh</mat-icon></button></div>
+  <app-joke-card-item *ngFor="let joke of jokes" [joke]="joke"></app-joke-card-item>
+</div>
